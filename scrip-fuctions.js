@@ -52,14 +52,14 @@ console.log(imprimirFun(funcion));
 function numDiv(numero){
     const mitad = numero / 2;
     const arr = [mitad, mitad]  
-    return `[${arr}]`;
+    return `[${arr.join(", ")}]`;
 }
 
-let n1 = 4
-let n2 = 10
+let div1 = 4
+let div2 = 10
 
-console.log(numDiv(n1));
-console.log(numDiv(n2));
+console.log(numDiv(div1));
+console.log(numDiv(div2));
 
 /*
 Secret Society
@@ -76,12 +76,12 @@ funcion = 'Secret Society'
 console.log(imprimirFun(funcion));
 
 function secretName(stack){
-let temp = []
-stack.forEach(e => {temp.push(e[0])}) ;
-temp.sort();
-let result = temp.join("");
+    let temp = []
+    stack.forEach(e => {temp.push(e[0])}) ;
+    temp.sort();
+    let result = temp.join("");
 
-return result;
+    return result;
 }
 
 const secret1 = ["Esperanza", "Franco", "Nia"];
@@ -123,15 +123,15 @@ function onlineStatus(stack){
     return `${temp} online`;
 }
 
-const online0 = []
-const online1 = ['glassedFer']
-const online2 = ['mockIng99', 'J0eyPunch']
-const online5 = ['mockIng99', 'J0eyPunch', 'glassedFer', 'mockIng99', 'J0eyPunch']
+const online0 = [];
+const online1 = ['glassedFer'];
+const online2 = ['mockIng99', 'J0eyPunch'];
+const online5 = ['mockIng99', 'J0eyPunch', 'glassedFer', 'mockIng99', 'J0eyPunch'];
 
-console.log(onlineStatus(online0))
-console.log(onlineStatus(online1))
-console.log(onlineStatus(online2))
-console.log(onlineStatus(online5))
+console.log(onlineStatus(online0));
+console.log(onlineStatus(online1));
+console.log(onlineStatus(online2));
+console.log(onlineStatus(online5));
 
 /*
 Array of Multiples
@@ -146,15 +146,21 @@ funcion = 'Array of Multiples'
 console.log(imprimirFun(funcion));
 
 function arrayMultiplos(n, l){
-    let result = [];
+    let temp = [];
     for(let i = 1; i < l+1; i++)
-    result.push(i * n);
+    temp.push(i * n);
+    let result = temp.join(", ");
 
     return result;
 }
 
-console.log(arrayMultiplos(2, 10))
-console.log(arrayMultiplos(17, 6))
+const n1 = 2;
+const l1 = 10;
+const n2 = 17;
+const l2 = 6;
+
+console.log(arrayMultiplos(n1, l1))
+console.log(arrayMultiplos(n2, l2))
 
 
 /*
@@ -167,7 +173,24 @@ Example:
 - `positiveDom([-1, -3, -5, 4, 6767])` should return `false`.
 */
 
+funcion = 'Positive dominance in Array'
+console.log(imprimirFun(funcion));
 
+function positiveDom(arr){
+    let posi = 0;
+    let tam = arr.length;
+    for(let i = 0; i < tam; i++)
+    if (arr[i] >= 0)
+    posi++;
+
+    return posi > tam / 2;
+}
+
+const pos1 = [-1, -3, -5, 4, 6767];
+const pos2 = [0, -3, -5, 4, 6767];
+
+console.log(positiveDom(pos1));
+console.log(positiveDom(pos2));
 
 /*
 Antipodal Average
@@ -179,6 +202,36 @@ Given an array, return a shorter array following these steps:
 
 Example:
 - For the array `[1,2,3,5,22,6]`, the result should be `[3.5, 12, 4]`.
-
-
 */
+
+funcion = 'Antipodal Average'
+console.log(imprimirFun(funcion));
+
+function antipodalAverage(arr){
+    let tam = arr.length;
+    let middle = tam / 2;
+    let result = [];
+    let arr1 = [];
+    let arr2 = [];
+
+    if (tam % 2 == 0){
+        arr1 = arr.slice(0, middle);
+        arr2 = arr.slice(middle, tam).reverse();
+    }
+    else{
+        middle = parseInt(middle);
+        arr1 = arr.slice(0, middle);
+        arr2 = arr.slice(middle + 1, tam).reverse();
+    }
+
+    for(let i = 0; i < middle; i++)
+    result.push((arr1[i] + arr2[i]) / 2);
+    
+    return `[${result.join(", ")}]`;
+}
+
+const aver1 = [1,2,3,5,22,6];
+const aver2 = [1,22,3,22,6];
+
+console.log(antipodalAverage(aver1));
+console.log(antipodalAverage(aver2));
